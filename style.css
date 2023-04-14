@@ -1,0 +1,155 @@
+:root {
+  --primary: rgb(103, 54, 217);
+  --secondary: rgb(231, 59, 114);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+h1, p, h3{
+  margin: 0;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex:1;
+  overflow: hidden;
+}
+
+.container > div{
+  flex:1;
+  overflow: hidden;
+}
+
+
+.connect, .history {
+  display: flex;
+  flex-direction: column;
+}
+.connect > div:last-child,
+.history > div:last-child
+{
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+
+.pd {
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-button{
+  display: flex;
+  width: 170px;
+  height: 200px;
+  margin: 5px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 50px #0000004d inset;
+  transition: all .2s ease-in-out;
+}
+.icon-button div {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 40px;
+  box-shadow: 0 0 0px 8px #ffffff4d;
+  transition: all .2s ease-in-out;
+}
+.icon-button button {
+  background: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 3em;
+  padding: 10px 30px;
+  transition: all .2s ease-in-out;
+}
+.icon-button:hover {
+  box-shadow: 0 0 5px #0000004d inset;
+}
+
+.icon-button:hover div {
+  box-shadow: 0 0 0px 20px #ffffff4d;
+}
+.icon-button:hover button {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px #0000004d;
+}
+.icon-button.primary {
+  background: var(--primary);
+}
+.icon-button.primary div {
+  color: var(--primary);
+}
+.icon-button.secondary {
+  background: var(--secondary);
+}
+.icon-button.secondary div {
+  color: var(--secondary);
+}
+
+.start {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.start > div {
+  flex: 1;
+  margin: 20px;
+}
+
+.connect > div:last-child > div {
+  display: inline-block;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+
+.listItem {
+  display: flex;
+  align-items: center;
+}
+.listItem > div {
+  padding: 10px;
+}
+.listItem > div:nth-child(2) {
+  flex: 1;
+}
+
+@media screen and (max-width:900px) {
+  .container {
+    flex-direction: column;
+  }
+  .start {
+    max-width: 100% !important;
+  }
+}
