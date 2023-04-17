@@ -1,38 +1,9 @@
 import './style.css'
-import avatarDefault from './public/60111.jpg'
 import { html } from './utils'
+import { avatar, iconButton, listItem } from './components'
+import { generateQR, scanQR, setOffer } from './qrcode'
 
 const currentDate = (new Date()).toDateString();
-
-
-const avatar = (imageUrl) => {
-    return html`
-        <div class="avatar" style="background-image:url(${imageUrl || avatarDefault})"></div>
-    `
-}
-
-
-const iconButton = (text, icon, color) => {
-    return html`
-        <div class="icon-button ${color}">
-            <div>${icon}</div>
-            <button>${text}</button>
-        </div>
-    `
-}
-
-const listItem = (imageUrl) => {
-    return html`
-        <div class="listItem">
-            <div>↑</div>
-            <div>
-                <h3>Send to SomeOne</h3>
-                <p>Archive > File No.</p>
-            </div>
-            <div>..</div>
-        </div>
-    `
-}
 
 const populateHistory = () => {
     const prevUsr = new Array(10).fill(null)
@@ -49,7 +20,6 @@ const populateActivities = () => {
     return result.join('')
 }
 
-
 document.querySelector('#app').innerHTML = html`
 <main>
     <nav class="pd">
@@ -61,7 +31,8 @@ document.querySelector('#app').innerHTML = html`
             ${avatar()}
         </div>
     </nav>
-    <div class="start">
+    <div id="qrScan"></div>
+    <div id="qrSec" class="start">
         ${iconButton('send', '↑', 'secondary')}
         ${iconButton('receive', '↓', 'primary')}
     </div>
@@ -81,4 +52,13 @@ document.querySelector('#app').innerHTML = html`
     </div>
 </main>
 `
+
+
+// this need to be improved later
+sendBtn.onclick = () => {
+    setOffer(true)
+    generateQR()
+}
+
+receiveBtn.onclick = scanQR
 
